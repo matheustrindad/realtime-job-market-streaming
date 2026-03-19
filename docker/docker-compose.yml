@@ -51,6 +51,19 @@ services:
     volumes:
       - E:/realtime-job-market-streaming:/opt/spark/work-dir
 
+  # O DB PRECISA FICAR AQUI, DENTRO DE SERVICES
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    networks:
+      - pipeline-net
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: job_market
+    ports:
+      - "5432:5432"
+
 networks:
   pipeline-net:
     driver: bridge

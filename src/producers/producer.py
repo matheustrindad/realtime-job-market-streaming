@@ -1,14 +1,18 @@
+import os
 import json
 import time
 import requests
 from kafka import KafkaProducer
+from dotenv import load_dotenv
 
-# Configurações da API (Use suas chaves do Projeto 1)
-APP_ID = "SUA_APP_ID"
-APP_KEY = "SUA_APP_KEY"
+# Carrega as variáveis do arquivo .env
+load_dotenv()
+
+APP_ID = os.getenv("ADZUNA_APP_ID")
+APP_KEY = os.getenv("ADZUNA_APP_KEY")
 
 producer = KafkaProducer(
-    bootstrap_servers=['localhost:9092'],
+    bootstrap_servers=['localhost:29092'],
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
@@ -36,4 +40,4 @@ if __name__ == "__main__":
     while True:
         fetch_and_send_jobs()
         print("Aguardando 10 minutos para a próxima coleta...")
-        time.sleep(600) # Evita estourar o limite da API
+        time.sleep(1) # Evita estourar o limite da API
