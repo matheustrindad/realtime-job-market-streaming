@@ -51,6 +51,20 @@ services:
     volumes:
       - E:/realtime-job-market-streaming:/opt/spark/work-dir
 
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.4.0
+    container_name: schema-registry
+    depends_on:
+      - kafka
+    networks:
+      - pipeline-net
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: kafka:9092
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+            
   # O DB PRECISA FICAR AQUI, DENTRO DE SERVICES
   db:
     image: postgres:15

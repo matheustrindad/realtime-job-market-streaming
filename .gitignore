@@ -210,5 +210,4 @@ __marimo__/
 jars/
 
 # Spark checkpoint directory
-spark-checkpoint/"jars/" 
-"spark-checkpoint/" 
+spark-checkpoint/ 
