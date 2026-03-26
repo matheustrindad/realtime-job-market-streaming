@@ -18,7 +18,8 @@ for i in range(50):
         "company": "Stress Test Corp",
         "location": "Remote",
         "salary_min": random.uniform(3000, 7000),
-        "timestamp": str(time.time())
+        "timestamp": str(time.time()),
+        "job_url": "https://www.google.com" # ADICIONE ESTA LINHA AQUI
     }
     
     # Injetando 1 ANOMALIA (Salário muito acima da média do lote)

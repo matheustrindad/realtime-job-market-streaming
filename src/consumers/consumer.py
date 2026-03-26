@@ -17,7 +17,8 @@ schema = StructType([
     StructField("company", StringType(), True),
     StructField("location", StringType(), True),
     StructField("salary_min", FloatType(), True),
-    StructField("timestamp", StringType(), True)
+    StructField("timestamp", StringType(), True), 
+    StructField("job_url", StringType(), True)
 ])
 
 # 3. Define a função de processamento (Batch)
